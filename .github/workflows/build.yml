@@ -3,6 +3,16 @@ name: Build and Publish
 on:
   schedule:
     - cron:  '*/5 * * * *'
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+        
+permissions:
+  contents: write
 
 jobs:
   update_and_push:
