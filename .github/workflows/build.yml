@@ -2,7 +2,7 @@ name: Build and Publish
 
 on:
   schedule:
-    - cron:  '*/10 * * * *'
+    - cron:  '*/5 * * * *'
 
 jobs:
   update_and_push:
@@ -14,6 +14,7 @@ jobs:
         shell: bash
         run : |
           bash getip.sh
+          
       - name: push updated lists
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
