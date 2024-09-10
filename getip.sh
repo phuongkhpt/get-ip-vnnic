@@ -4,4 +4,5 @@ if [[ $? -ne 0 ]]; then
 	echo "Error: Curl command failed"
 else
 	egrep -o '[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+/[0-9]+' output.txt > ip-vnnic
+ 	egrep "(::)?[0-9a-fA-F]{1,4}(::?[0-9a-fA-F]{1,4}){1,7}(::)?" output.txt   | sed 's/[[:space:]]//g' > ip-vnnic-v6
 fi
