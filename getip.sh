@@ -5,7 +5,9 @@ function curl_get_list(){
 }
 
 function main() {
+
 list=$(curl_get_list)
+
 if [[ $list -ne 0 ]]; then
     echo "Error: Curl command failed"
 else
