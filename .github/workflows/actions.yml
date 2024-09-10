@@ -2,10 +2,6 @@ name: Build and Publish
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
-      - develop
   schedule:
     - cron:  '5 23 * * *'
 
@@ -18,7 +14,6 @@ jobs:
       - name: Install xmllint
         run: |
           sudo apt-get update
-          sudo apt-get install -y libxml2-utils
       - name : update lists
         shell: bash
         run : |
