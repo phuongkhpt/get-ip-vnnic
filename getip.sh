@@ -5,5 +5,5 @@ curl -s --header 'User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebK
 if [[ $? -ne 0 ]]; then
     echo "Error: Curl command failed"
 else
-	egrep -o '[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+/[0-9]+' abc.txt > ip-vnnic
+	egrep -o '[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+/[0-9]+' output.txt > ip-vnnic
 fi
