@@ -1,9 +1,10 @@
 name: Build and Publish
 
 on:
+  repository_dispatch:
   workflow_dispatch:
   schedule:
-    - cron:  '5 23 * * *'
+    - cron:  '*/5 * * * *'
 
 jobs:
   update_and_push:
@@ -11,14 +12,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-      - name: Install xmllint
-        run: |
-          sudo apt-get update
       - name : update lists
         shell: bash
         run : |
           bash getip.sh
       - name: push updated lists
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: update-lists
