@@ -1,0 +1,28 @@
+name: Build and Publish
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  schedule:
+    - cron:  '5 23 * * *'
+
+jobs:
+  update_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Install xmllint
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxml2-utils
+      - name : update lists
+        shell: bash
+        run : |
+          bash getip.sh
+      - name: push updated lists
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: update-lists
